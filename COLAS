@@ -1,0 +1,58 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package queue;
+
+/**
+ *
+ * @author fabi
+ */
+public class Cola {
+    Nodo inicio = null;
+    Nodo fin = null;
+    
+    void encolar(char dato){
+        Nodo nuevo = new Nodo();
+        nuevo.dato = dato;
+        nuevo.anterior = null;
+        nuevo.siguiente = null;
+        if(inicio != null){
+            inicio.anterior = nuevo;
+            nuevo.siguiente = inicio;
+            inicio = nuevo;
+        }else{
+            inicio = nuevo;
+            fin = nuevo;
+        }
+    }
+    
+    char desencolar(){
+        if(fin != null){
+            Nodo aux = new Nodo();
+            aux = fin;
+        if(inicio == fin){
+            inicio = null;
+            fin = null;
+        }else{
+            fin.siguiente = null;
+            fin = fin.anterior;
+        }
+        aux.siguiente = null;
+        aux.anterior = null;
+        
+        return aux.dato;
+        }else{
+            return 0;
+        }
+    }
+    
+    void recorrer(){
+        Nodo aux = inicio;
+        while(aux != null){
+            System.out.println(aux.dato);
+            aux = aux.siguiente;
+        }
+    }
+}
