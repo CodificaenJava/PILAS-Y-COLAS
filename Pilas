@@ -1,0 +1,50 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pila;
+
+/**
+ *
+ * @author fabi
+ */
+public class pilas {
+    Nodo inicio = null;
+    
+    void push (int dato){
+        Nodo nuevo = new Nodo();
+        nuevo.dato = dato;
+        nuevo.siguiente = null;
+        if(inicio == null){
+            inicio = nuevo;
+        }else{
+            nuevo.siguiente = inicio;
+            inicio = nuevo;
+        }
+    }
+    
+    int pop(){
+        if(inicio != null){
+            Nodo aux = inicio;
+            inicio = inicio.siguiente;
+            aux.siguiente= null;
+            return aux.dato;
+        }
+        else{
+            return 0;
+        }
+    }
+    
+    boolean pilavacia(){
+        return inicio==null;
+    }
+    
+    void recorrer(){
+        Nodo aux = inicio;
+        while(aux != null){
+            System.out.println(aux.dato);
+            aux = aux.siguiente;
+        }
+    }
+}
